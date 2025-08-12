@@ -17,7 +17,7 @@ async function fetchRecados() {
   listaEl.innerHTML = '<li class="placeholder">Carregando recados...</li>';
   try {
     const resp = await fetch(API_URL);
-    if (!resp.ok) throw new Error(Erro ${resp.status});
+    if (!resp.ok) throw new Error(`Erro ${resp.status}`);
     recados = await resp.json();
     renderRecados();
   } catch (err) {
@@ -39,7 +39,6 @@ function pickColorClass(index) {
   return cores[index % cores.length];
 }
 
-
 function renderRecados() {
   listaEl.innerHTML = '';
   if (!recados || recados.length === 0) {
@@ -56,7 +55,7 @@ function renderRecados() {
 
   arr.forEach((r, idx) => {
     const li = document.createElement('li');
-    li.className = postit ${pickColorClass(idx)};
+    li.className = `postit ${pickColorClass(idx)}`;
 
     const autor = document.createElement('strong');
     autor.textContent = r.autor || 'Anônimo';
@@ -65,7 +64,7 @@ function renderRecados() {
     msg.textContent = r.mensagem || '';
 
     const data = document.createElement('small');
-    data.textContent = Postado em: ${formatDate(r.data_criacao)};
+    data.textContent = `Postado em: ${formatDate(r.data_criacao)}`;
 
     li.append(autor, msg, data);
     listaEl.appendChild(li);
@@ -113,7 +112,7 @@ formRecado.addEventListener('submit', async (e) => {
       body: JSON.stringify({ autor, mensagem }),
     });
 
-    if (!resp.ok) throw new Error(Erro ${resp.status});
+    if (!resp.ok) throw new Error(`Erro ${resp.status}`);
 
     // fecha dialogo
     dialogAdd.close();
