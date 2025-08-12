@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mural de Recados</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+<body>
+  <div class="app">
+    <!-- Meu Título -->
+    <h1 class="app-title">Mural de avisos</h1>
+
+    <header class="mural-header">
+      <div class="controls">
+        <button id="ordenarBtn" aria-pressed="false" title="Ordenar por autor">Ordenar por autor A→Z</button>
+        <button id="refreshBtn" title="Atualizar recados">Atualizar</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Minha Lista -->
+      <ul id="mural-lista" class="mural-list" aria-live="polite">
+        <li class="placeholder">Carregando recados...</li>
+      </ul>
+    </main>
+  </div>
+
+  <!-- Botão flutuante -->
+  <button id="btn-add" class="btn-floating" aria-label="Adicionar recado">+</button>
+
+  <!-- Dialog -->
+  <dialog id="dialog-add-recado" class="dialog-add">
+    <form method="dialog" id="form-recado">
+      <h2>Novo Recado</h2>
+      <label>
+        Autor:<br />
+        <input type="text" name="autor" placeholder="Seu nome" required />
+      </label>
+      <label>
+        Mensagem:<br />
+        <textarea name="mensagem" placeholder="Escreva seu recado aqui" required></textarea>
+      </label>
+      <menu>
+        <button type="submit">Publicar</button>
+        <button type="button" id="btn-cancel">Cancelar</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
